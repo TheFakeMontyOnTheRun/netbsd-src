@@ -1,0 +1,140 @@
+/*	$NetBSD: msg.mbr.pt,v 1.4 2019/06/12 06:20:17 martin Exp $	*/
+
+/*
+ * Copyright 1997 Piermont Information Systems Inc.
+ * All rights reserved.
+ *
+ * Written by Philip A. Nelson for Piermont Information Systems Inc.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ * 1. Redistributions of source code must retain the above copyright
+ *    notice, this list of conditions and the following disclaimer.
+ * 2. Redistributions in binary form must reproduce the above copyright
+ *    notice, this list of conditions and the following disclaimer in the
+ *    documentation and/or other materials provided with the distribution.
+ * 3. The name of Piermont Information Systems Inc. may not be used to endorse
+ *    or promote products derived from this software without specific prior
+ *    written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY PIERMONT INFORMATION SYSTEMS INC. ``AS IS''
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ * ARE DISCLAIMED. IN NO EVENT SHALL PIERMONT INFORMATION SYSTEMS INC. BE
+ * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
+ * THE POSSIBILITY OF SUCH DAMAGE.
+ *
+ */
+
+/* MBR Message catalog -- Portuguese, i386 version */
+
+/* NB: Lines ending in spaces force line breaks */
+
+message mbr_part_header_1	{Tipo}
+message mbr_part_header_2	{Montar}
+.if BOOTSEL
+message mbr_part_header_3	{Menu de inicializaçao}
+.endif
+
+message noactivepart
+{Você nao marcou uma partiçao como ativa. Isso pode fazer com que o seu 
+sistema nao inicie corretamente.}
+
+message fixactivepart
+{
+A partiçao NetBSD do disco deve ser marcada como ativa?}
+
+message setbiosgeom
+{
+Você será solicitadoa informar a geometria.
+Insira o número de stores por trilha (máximo 63)
+e o número de cabeçalhos (máximo 256) queo BIOS usa para acessar o disco.
+O número de cilindros será calculado a partir do tamanho do disco.
+
+}
+
+message nobiosgeom
+{Sysinst nao pôde determinar automaticamente a geometria do BIOS do disco.
+A geometria física é %d cilindros %d setores %d cabeçalhos\n}
+
+message biosguess
+{Usando as informaçoes existente no disco, meu melhor palpite para a geometria
+do BIOS é %d cilindros %d setores %d cabeçalhos\n}
+
+message realgeom
+{real geom: %d cilindros, %d cabeçalhos, %d setores  (OBS: apenas para comparaçao)\n}
+
+message biosgeom
+{BIOS geom: %d cilindros, %d cabeçalhos, %d setores\n}
+
+message ptn_active
+{ativo}
+.if BOOTSEL
+message bootmenu
+{Menu de inicializaçao}
+message boot_dflt
+{padrao}
+.endif
+
+message mbr_get_ptn_id {Tipo de partiçao (0..255)}
+message Only_one_extended_ptn {Só pode haver uma partiçao estendida}
+
+message mbr_flags	{ab}
+message mbr_flag_desc
+.if BOOTSEL
+{, (a)tivo, (b)oot padrao}
+.else
+{, (a)tivo}
+.endif
+
+/* Called with:				Example
+ *  $0 = device name			wd0
+ *  $1 = outer partitioning name	Master Boot Record (MBR)
+ *  $2 = short version of $1		MBR
+ */
+message dofdisk
+{Escrevendo a tabela de particao $2 em $0...
+}
+
+message wmbrfail
+{A reescrita do MBR falhou. Nao consigo continuar.}
+
+message mbr_inside_ext
+{A partiçao precisa começar dentro da partiçao estendida}
+
+message mbr_ext_nofit
+{A partiçao estendida deve ser capaz de conter todas as partições contidas}
+
+message mbr_ext_not_empty
+{Nao é possível excluir uma partiçao estendida nao vazia!}
+
+message mbr_no_free_primary_have_ext
+{Esta partiçao nao está dentro da partiçao estendida
+e nao há slot livre no registro de inicializaçao primário}
+
+message mbr_no_free_primary_no_ext
+{Nao há espaço no bloco de inicializaçao primário.
+Você pode considerar excluir uma partiçao, criar uma partiçao estendida 
+e entao adicionar novamente a partiçao excluída}
+
+.if 0
+.if BOOTSEL
+message Set_timeout_value
+{Definir valor de tempo limite}
+
+message bootseltimeout
+{Tempo limite do menu de inicializaçao: %d\n}
+
+.endif
+.endif
+
+message parttype_mbr {Master Boot Record (MBR)}
+message parttype_mbr_short {MBR}
+
+message mbr_type_invalid	{Tipo de partiçao inválido (0 .. 255)}

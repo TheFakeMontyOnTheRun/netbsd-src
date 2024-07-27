@@ -1,0 +1,129 @@
+/*      $NetBSD: msg.entropy.pt,v 1.5 2022/04/21 17:30:15 martin Exp $  */
+
+/*
+ * Copyright (c) 2020 The NetBSD Foundation, Inc.
+ * All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ * 1. Redistributions of source code must retain the above copyright
+ *    notice, this list of conditions and the following disclaimer.
+ * 2. Redistributions in binary form must reproduce the above copyright
+ *    notice, this list of conditions and the following disclaimer in the
+ *    documentation and/or other materials provided with the distribution.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE NETBSD FOUNDATION, INC. AND CONTRIBUTORS
+ * ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED
+ * TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+ * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE FOUNDATION OR CONTRIBUTORS
+ * BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ * POSSIBILITY OF SUCH DAMAGE.
+ */
+
+message Configure_entropy	{Configurar entropy}
+
+message continue_without_entropy	{Agora nao, continue!}
+
+message not_enough_entropy
+{Este sistema parece nao ter um gerador de números pseudoaleatórios
+criptograficamente forte. Nao há entropia suficiente disponível para criar chaves
+seguras (por exemplo, chaves de host ssh).
+
+Se você planeja usar esta instalaçao para trabalho de produçao e
+por exemplo, terá chaves de host ssh geradas, recomendamos fortemente concluir
+a configuraçao de entropia agora!
+
+Você pode usar dados aleatórios gerados em outro computador e carregá-los
+aqui, ou pode inserir caracteres aleatórios manualmente.
+
+Se você tiver um dispositivo de número aleatório USB, conecte-o agora e selecione
+a opçao "Reteste".}
+
+message entropy_add_manually		{Insira manualmente caracteres aleatórios}
+message entropy_download_raw		{Carregar dados binários aleatórios}
+message	entropy_download_seed		{Importar arquivo de entropia do NetBSD}
+message entropy_retry			{Reteste}
+
+message entropy_enter_manual1
+{Insira uma linha de caracteres aleatórios.}
+
+message entropy_enter_manual2
+{Eles devem conter pelo menos 256 bits aleatórios, como em 256 lançamentos
+de moeda, 100 lançamentos de um dado de 6 lados, 64 dígitos hexadecimais
+aleatórios ou (se você puder copiar e colar a saída de outra máquina neste
+instalador) a saída de execuçao do seguinte comando em outra máquina cuja
+aleatóriedade você confia:}
+
+message entropy_enter_manual3
+{Uma linha de qualquer comprimento e conteúdo será aceita e
+assumida como contendo pleo menos 256 bits aleatórios. Se ela 
+contiver menos, o sistema instalado pode nao ser seguro.}
+
+message entropy_select_file
+{Por favor, selecione como você deseja transferir o arquivo
+de dados aleatórios para esta máquina:}
+
+message entropy_add_download_ftp
+{Download via ftp}
+
+message entropy_add_download_http
+{Download via http}
+
+message download_entropy
+{Iniciar download}
+
+message entropy_add_nfs
+{Carregar a partir de um NFS}
+
+message entropy_add_local
+{Carregar de um arquivo de sistema local (Exemplo: um dispositivo USB)}
+
+message entropy_file
+{Caminho/arquivo}
+
+message load_entropy
+{Carregar dados aleatórios}
+
+message set_entropy_file
+{Caminho do arquivo de dados aleatórios}
+
+/* Called with:				Example
+ *  $0 = content of file		NetBSD entropy seed file
+ */
+message entropy_via_nfs
+{Selecione um servidor, um compartilhamento e o caminho para carregar o $0.}
+
+/* Called with:				Example
+ *  $0 = content of file		NetBSD entropy seed file
+ */
+message entropy_via_download
+{Como nao há entropia suficiente disponível neste sistema, todas as operaçoes
+criptográficas sao suspeitas de ataques de repetiçao.
+Use apenas redes locais confiáveis.}
+
+message entropy_data
+{arquivo de dados aleatórios}
+
+message entropy_data_hdr
+{Em um sistema com gerador de números pseudoaleatórios criptograficamente
+forte você pode criar um arquivo com dados binários aleatórios como este:}
+
+message entropy_seed
+{Arquivo seed de entropia do NetBSD}
+
+message entropy_seed_hdr
+{Em um sistema NetBSD com gerador de números pseudoaleatórios criptograficamente forte,
+você pode criar um istantâneo de entropia como este:}
+
+message entropy_path_and_file
+{Caminho e nome do arquivo}
+
+message entropy_localfs
+{Insira o dispositivo local nao montado e o diretório naquele dispositivo
+onde os dados aleatórios serao localizados.}

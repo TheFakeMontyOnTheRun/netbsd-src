@@ -1,0 +1,167 @@
+/*	$NetBSD: msg.pm.pt,v 1.4 2020/11/05 11:10:11 martin Exp $	*/
+
+/*
+ * Copyright 1997 Piermont Information Systems Inc.
+ * All rights reserved.
+ *
+ * Written by Philip A. Nelson for Piermont Information Systems Inc.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ * 1. Redistributions of source code must retain the above copyright
+ *    notice, this list of conditions and the following disclaimer.
+ * 2. Redistributions in binary form must reproduce the above copyright
+ *    notice, this list of conditions and the following disclaimer in the
+ *    documentation and/or other materials provided with the distribution.
+ * 3. The name of Piermont Information Systems Inc. may not be used to endorse
+ *    or promote products derived from this software without specific prior
+ *    written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY PIERMONT INFORMATION SYSTEMS INC. ``AS IS''
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ * ARE DISCLAIMED. IN NO EVENT SHALL PIERMONT INFORMATION SYSTEMS INC. BE
+ * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
+ * THE POSSIBILITY OF SUCH DAMAGE.
+ *
+ */
+
+/* extended partition manager message catalog -- Spanish, machine independent */
+
+message fillzeros {Preencher com zeros}
+message fillrandom {Preencher com dados aleatórios}
+message raid0 {0 - Sem paridade, striping simples.}
+message raid1 {1 - Espelhamento. A paridade é o espelho.}
+message raid4 {4 - Striping com paridade armazenada no último componente.}
+message raid5 {5 - Striping com paridade distribuída.}
+
+message wannaunblock {O dispositivo está bloqueado. Editá-lo pode causar problemas.
+Deseja forçar o desbloqueio e continuar?}
+message wannatry {você quer tentar?}
+message create_cgd {Criar volume criptográfico (CGD)}
+message create_vnd {Criar imagem de disco virtual (VND)}
+message create_vg {Criar grupo de volume (LVM VG)}
+message create_lv {Criar volume lógico}
+message create_raid {Criar RAID por software}
+message updpmlist {Atualizar lista de dispositivos}
+message savepm {Salvar mudanças}
+message pmblocked {BLOQUEADO}
+message pmunchanged {SEM USO}
+message pmused {USADO}
+message pmmounted {(montado)}
+message pmunused {(sem usar)}
+message pmgptdisk {Disco com GPT}
+
+message finishpm {Finalizar o particionamento}
+message limitcount {Limite de contagem de dispositivos foi atingido!}
+message invaliddev {Dispositivo inválido}
+message avdisks {Discos disponíveis:}
+message nofreedev {Não é possível alocar o nó do dispositivo!}
+message partman_header
+{Este é o gerenciador de partições estendido. Todos os discos, partições, etc. estao
+listados abaixo. Para usar RAID, LVM ou CGD:
+1) Crie partições com o tipo apropriado;
+2) Crie RAID/LVM VG/CGD usando essas partições; 3) Salve as alterações;
+4) Crie partições para RAID/CGD ou Volumes Lógicos para LVM.}
+
+/* used to form strings like: "vnd0 on /var/tmp/disk1.img" */
+message        pm_menu_on {on}
+/* Called with: 			Example
+ *  $0 = device name			raid0
+ *  $1 = raid level		       1
+ */
+message raid_menufmt {$0 (nível $1)}
+message raid_err_menufmt {RAID VAZIO!}
+message raid_disks_fmt {Discos}
+message raid_spares_fmt {Peças de reposiçao}
+message raid_level_fmt {Nível RAID}
+message raid_numrow_fmt {numRow}
+message raid_numcol_fmt {numCol}
+message raid_numspare_fmt {numSpare}
+message raid_sectpersu_fmt {sectPerSU}
+message raid_superpar_fmt {SUsPerParityUnit}
+message raid_superrec_fmt {SUsPerReconUnit}
+message raid_nomultidim {Matrizes multidimensionais NAO sao suportadas!}
+message raid_numrow_ask {numRow?}
+message raid_numcol_ask {numCol?}
+message raid_numspare_ask {numSpare?}
+message raid_sectpersu_ask {sectPerSU?}
+message raid_superpar_ask {SUsPerParityUnit?}
+message raid_superrec_ask {SUsPerReconUnit?}
+message raid_disks {Discos em RAID:}
+message vnd_err_menufmt {CAMINHO NAO DEFINIDO!}
+message vnd_assign {ATRIBUIR}
+message vnd_path_fmt {Caminho de arquivo}
+message vnd_assign_fmt {Criar nova imagem}
+message vnd_size_fmt {Tamanho}
+message vnd_ro_fmt {Somente leitura}
+message vnd_geom_fmt {Defini geometria manualmente}
+message vnd_bps_fmt {Bytes por setor}
+message vnd_spt_fmt {Setores por trilha}
+message vnd_tpc_fmt {Trilhas por cilindros}
+message vnd_cyl_fmt {Cilindros}
+message vnd_path_ask {Caminho de arquivo?}
+message vnd_size_ask {Tamanho (MB)?}
+message vnd_bps_ask {Bytes por setor?}
+message vnd_spt_ask {etores por trilha?}
+message vnd_tpc_ask {Trilhas por cilindros?}
+message vnd_cyl_ask {Cilindros}
+message cgd_err_menufmt {DISCO NAO DEFINIDO!}
+message cgd_dev_fmt {Dispositivo de base}
+message cgd_enc_fmt {Criptografia}
+message cgd_key_fmt {Tamanho da chage}
+message cgd_iv_fmt {Algoritmo IV}
+message cgd_keygen_fmt {Geraçao de chaves}
+message cgd_verif_fmt {Método de verificaçao}
+message lvm_disks {Discos em VG}
+message lvm_err_menufmt {VG VAZIO!}
+message lvm_disks_fmt {PV's}
+message lvm_name_fmt {Nome}
+message lvm_maxlv_fmt {MaxLogicalVolumes}
+message lvm_maxpv_fmt {MaxPhysicalVolumes}
+message lvm_extsiz_fmt {PhysicalExtentSize}
+message lvm_name_ask {Nome?}
+message lvm_maxlv_ask {MaxLogicalVolumes?}
+message lvm_maxpv_ask {MaxPhysicalVolumes?}
+message lvm_extsiz_ask {PhysicalExtentSize (MB)?}
+message lvmlv_menufmt {Volume lógico}
+message lvmlv_name_fmt {Nome}
+message lvmlv_size_fmt {Tamanho}
+message lvmlv_ro_fmt {Somente leitura}
+message lvmlv_cont_fmt {Contígua}
+message lvmlv_extnum_fmt {LogicalExtentsNumber}
+message lvmlv_minor_fmt {Menor número}
+message lvmlv_mirrors_fmt {Espelhamentos}
+message lvmlv_regsiz_fmt {MirrorLogRegionSize}
+message lvmlv_pers_fmt {Número menor persistente}
+message lvmlv_readahsect_fmt {ReadAheadSectors}
+message lvmlv_stripes_fmt {Stripes}
+message lvmlv_stripesiz_fmt {Stripesize}
+message lvmlv_zero_fmt {Zerando o primeiro KB}
+message lvmlv_name_ask {Nome?}
+message lvmlv_size_ask {Tamanho (MB)?}
+message lvmlv_extnum_ask {LogicalExtentsNumber?}
+message lvmlv_minor_ask {Número menor?}
+message lvmlv_mirrors_ask {Espelhamento?}
+message lvmlv_regsiz_ask {MirrorLogRegionSize?}
+message lvmlv_readahsect_ask {ReadAheadSectors?}
+message lvmlv_stripes_ask {Stripes?}
+
+message notsupported {Operaçao nao suportada!}
+message edit_parts {Editar partiçoes}
+message switch_parts {Switch partitioning scheme}
+message fmtasraid {Formatar como RAID}
+message fmtaslvm {Formatar como LVM PV}
+message encrypt {Criptografar (CGD)}
+message erase {Apaga com segurança}
+message undo {Desfazer mudanças}
+message unconfig {Desconfigurar}
+message edit {Editar}
+message doumount {Desmontar forçado}
+
