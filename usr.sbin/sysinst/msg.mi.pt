@@ -39,7 +39,7 @@
  * before the locale is set up!
  */
 message sysinst_message_language
-{Mensagens de instalaçao em inglês}
+{Mensagens de instalaçao em portugês}
 
 message sysinst_message_locale
 {pt_BR.ISO8859-1}
