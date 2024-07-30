@@ -54,24 +54,24 @@ message setbiosgeom
 {
 Você será solicitadoa informar a geometria.
 Insira o número de stores por trilha (máximo 63)
-e o número de cabeçalhos (máximo 256) queo BIOS usa para acessar o disco.
+e o número de cabeças (máximo 256) queo BIOS usa para acessar o disco.
 O número de cilindros será calculado a partir do tamanho do disco.
 
 }
 
 message nobiosgeom
 {Sysinst nao pôde determinar automaticamente a geometria do BIOS do disco.
-A geometria física é %d cilindros %d setores %d cabeçalhos\n}
+A geometria física é %d cilindros %d setores %d cabeças\n}
 
 message biosguess
 {Usando as informaçoes existente no disco, meu melhor palpite para a geometria
-do BIOS é %d cilindros %d setores %d cabeçalhos\n}
+do BIOS é %d cilindros %d setores %d cabeças\n}
 
 message realgeom
-{real geom: %d cilindros, %d cabeçalhos, %d setores  (OBS: apenas para comparaçao)\n}
+{real geom: %d cilindros, %d cabeças, %d setores  (OBS: apenas para comparaçao)\n}
 
 message biosgeom
-{BIOS geom: %d cilindros, %d cabeçalhos, %d setores\n}
+{BIOS geom: %d cilindros, %d cabeças, %d setores\n}
 
 message ptn_active
 {ativo}

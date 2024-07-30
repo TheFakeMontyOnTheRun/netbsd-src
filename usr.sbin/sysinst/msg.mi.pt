@@ -139,7 +139,7 @@ message Available_disks
 message Available_wedges	{"wedges" existentes}
 
 message heads
-{cabeçalhos}
+{cabeças}
 
 message sectors
 {setores}
